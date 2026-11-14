@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f2e9">
+  <meta name="description" content="刷题小屋 —— 导入自己的题库，专注练习、错题复习与学习统计。">
+  <title>刷题小屋 · 自己的题库自己刷</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231f7a63'/%3E%3Cpath d='M20 22h24M20 32h24M20 42h14' stroke='%23fffdf8' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-action="nav" data-route="home" aria-label="回到概览">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z" stroke="currentColor" stroke-width="1.8"/><path d="M8 7h8M8 11h8M8 15h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-text">
+          <strong>刷题小屋</strong>
+          <small>STUDY ROOM</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="主导航">
+        <button class="nav-item" data-action="nav" data-route="home">
+          <span class="nav-icon" data-icon="home"></span><span>概览</span>
+        </button>
+        <button class="nav-item" data-action="nav" data-route="practice">
+          <span class="nav-icon" data-icon="zap"></span><span>开始练习</span>
+        </button>
+        <button class="nav-item" data-action="nav" data-route="bank">
+          <span class="nav-icon" data-icon="library"></span><span>题库</span>
+          <span class="nav-count" id="navQuestionCount">0</span>
+        </button>
+        <button class="nav-item" data-action="nav" data-route="wrong">
+          <span class="nav-icon" data-icon="rotate"></span><span>错题本</span>
+          <span class="nav-count nav-count-warn" id="navWrongCount">0</span>
+        </button>
+        <button class="nav-item" data-action="nav" data-route="stats">
+          <span class="nav-icon" data-icon="chart"></span><span>学习统计</span>
+        </button>
+      </nav>
+
+      <div class="bank-panel">
+        <div class="bank-panel-head">
+          <span class="eyebrow">我的题库</span>
+          <button class="mini-icon-btn" data-action="open-bank-manager" title="管理题库" aria-label="管理题库" data-icon="settings2"></button>
+        </div>
+        <div class="bank-list" id="bankList"></div>
+        <button class="bank-add-btn" data-action="open-import">
+          <span data-icon="plus"></span> 导入新题库
+        </button>
+      </div>
+
+      <div class="sidebar-foot">
+        <button class="side-link" data-action="open-settings"><span data-icon="settings"></span> 设置</button>
+        <button class="side-link" data-action="toggle-theme" id="themeBtn"><span data-icon="sun"></span> 外观</button>
+      </div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-title">
+          <span class="mobile-brand">刷题小屋</span>
+          <span id="pageTitle">概览</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost btn-sm topbar-import" data-action="open-import">
+            <span data-icon="upload"></span><span class="btn-label">导入题目</span>
+          </button>
+          <button class="icon-btn" data-action="open-settings" aria-label="设置" data-icon="settings"></button>
+        </div>
+      </header>
+      <main class="view" id="view" tabindex="-1"></main>
+      <footer class="app-foot">
+        <span>数据只保存在这台设备的浏览器里</span>
+        <span class="dot-sep">·</span>
+        <button class="link-btn" data-action="export-backup">备份数据</button>
+        <span class="dot-sep">·</span>
+        <span>刷题小屋</span>
+      </footer>
+    </div>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <section id="sessionRoot" class="session-root" aria-live="polite"></section>
+
+  <script src="js/import.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
