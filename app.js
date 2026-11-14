@@ -2696,6 +2696,7 @@ B. 选项二
     const root = $('#sessionRoot');
     if (!root) return;
     if (!session) { root.innerHTML = ''; return; }
+    const animateIn = !root.querySelector('.session-screen');
     if (session.finished) {
       root.innerHTML = renderResult();
       hydrateIcons(root);
@@ -2715,7 +2716,7 @@ B. 选项二
     const timerWarning = session.exam && remaining <= 60;
 
     root.innerHTML = `
-      <div class="session-screen">
+      <div class="session-screen${animateIn ? ' session-screen-enter' : ''}">
         <header class="session-head">
           <button class="session-exit" data-action="exit-session">${icon('arrowLeft')} 退出</button>
           <div class="session-meta">
