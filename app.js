@@ -1488,7 +1488,7 @@ D. Python
               <label for="importBankMode">导入到</label>
               <select class="select" id="importBankMode">${targetOptions}</select>
             </div>
-            <div class="field" id="importNewBankField" ${preset ? 'style="visibility:hidden"' : ''}>
+            <div class="field" id="importNewBankField" ${preset ? 'style="display:none"' : ''}>
               <label for="importBankName">新题库名称</label>
               <input class="input" id="importBankName" maxlength="40" value="${escapeAttr(defaultName)}" placeholder="例如：计算机网络">
             </div>
@@ -1547,7 +1547,7 @@ B. 选项二
 
         const updateMode = () => {
           if (!newField) return;
-          newField.style.visibility = mode.value === 'new' ? 'visible' : 'hidden';
+          newField.style.display = mode.value === 'new' ? '' : 'none';
         };
         mode.addEventListener('change', updateMode);
         updateMode();
@@ -1742,7 +1742,7 @@ B. 选项二
             <div><strong style="font-size:11px">本地数据体积</strong><p>题库、练习记录和设置都保存在 localStorage。</p></div>
             <span class="pill">${formatBytes(size)}</span>
           </div>
-          <div style="display:flex;gap:7px;flex-wrap:wrap">
+          <div class="settings-actions">
             <button class="btn btn-sm" data-action="export-backup">${icon('database')} 备份全部数据</button>
             <button class="btn btn-sm" data-action="restore-backup">${icon('refresh')} 从备份恢复</button>
             <button class="btn btn-sm" data-action="open-export">${icon('download')} 导出题库</button>
